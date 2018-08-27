@@ -2,8 +2,10 @@ package br.com.alura.listavippro;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import br.com.alura.listavippro.model.Convidado;
 import br.com.alura.listavippro.repository.ConvidadoRepository;
 
 @Controller
@@ -18,7 +20,10 @@ public class ConvidadoController {
 	}
 	
 	@RequestMapping("listaconvidados")
-	public String listaConvidados(){
+	public String listaConvidados(Model model){
+		
+		Iterable<Convidado> convidados = repository.findAll();
+		model.addAttribute("convidados", convidados);
 		return "listaconvidados";
 	}
 	
