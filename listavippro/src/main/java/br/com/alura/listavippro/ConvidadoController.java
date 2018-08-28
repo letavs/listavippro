@@ -13,18 +13,23 @@ public class ConvidadoController {
 
 	@Autowired
 	private ConvidadoRepository repository;
-	
+
 	@RequestMapping("/")
-	public String index(){
+	public String index() {
 		return "index";
 	}
-	
+
 	@RequestMapping("listaconvidados")
-	public String listaConvidados(Model model){
-		
+	public String listaConvidados(Model model) {
+
 		Iterable<Convidado> convidados = repository.findAll();
 		model.addAttribute("convidados", convidados);
 		return "listaconvidados";
 	}
-	
+
+	@RequestMapping("convidar")
+	public String convite() {
+		return "convidar";
+	}
+
 }
